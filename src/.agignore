@@ -1,0 +1,19 @@
+dist
+volume
+node_modules
+Applications
+Creative Cloud Files
+Documents
+Library
+Movies
+Music
+Pictures
+Postman
+Public
+temp
+VirtualBox VMs
+.git
+*.pyc
+.DS_Store
+yarn.lock
+package-lock.json

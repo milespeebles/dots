@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  icecast:
+    image: vitiman/alpine-icecast:latest
+    ports:
+      - '8000:8000'
+    networks:
+      - music_stack
+
+  mpd:
+    image: vitiman/alpine-mpd:latest
+    ports:
+      - '6600:6600'
+    depends_on:
+      - icecast
+    networks:
+      - music_stack
+    volumes:
+      - /Volumes/Public/music/songs:/var/lib/mpd/music
+      - /Volumes/Public/music/playlists:/var/lib/mpd/playlists
+      - ~/sync/data/mpd:/var/lib/mpd/database
+
+networks:
+  music_stack:
+    driver: bridge
