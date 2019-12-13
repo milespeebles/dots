@@ -14,6 +14,18 @@ temp
 VirtualBox VMs
 .git
 *.pyc
+*.svg
+*.otf
+*.woff
+*.woff2
+*.eot
+*.png
+*.jpg
+*.gif
+*.psd
+*.woff2
+*.ttf
 .DS_Store
+.Trash
 yarn.lock
 package-lock.json

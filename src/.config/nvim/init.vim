@@ -59,6 +59,10 @@ Plug 'jason0x43/vim-js-indent'     " js / ts indentation
 " Plug 'Quramy/tsuquyomi'            " tsserver client
 " Plug 'burner/vim-svelte'           " svelte support
 
+" markdown
+Plug 'godlygeek/tabular'
+" Plug 'plasticboy/vim-markdown'
+
 " fzf
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -219,7 +223,7 @@ let g:colorizer_auto_color = 1
 
 " fzf
 let $BAT_THEME = 'base16'
-let $FZF_DEFAULT_COMMAND = 'ag --hidden -U -l -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -l -g ""'
 
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
@@ -228,7 +232,7 @@ command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 nnoremap <silent> <leader>ff :Buffers<CR>
-nnoremap <silent> <leader>fa :Files<CR>
+nnoremap <silent> <leader>fa :Files <CR>
 nnoremap <silent> <leader>fg :Ag<CR>
 nnoremap <silent> <leader>fp :HFiles ~/dev<CR>
 nnoremap <silent> <leader>fd :HFiles ~/sync/dots<CR>

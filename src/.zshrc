@@ -283,3 +283,14 @@ function help { tldr $1 | less }
 # bat
 alias bat="bat --theme base16"
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+FZF_CTRL_T_COMMAND='ag -l -g ""'
+FZF_CTRL_T_OPTS="--preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 40%"
+
+FZF_ALT_C_COMMAND='fd -t d ""'
+FZF_ALT_C_OPTS="--height 40%"
+
+alias f="ag --hidden -l g "" | fzf --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 40%"
+
