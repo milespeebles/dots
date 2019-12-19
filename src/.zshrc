@@ -1,10 +1,15 @@
-# antigen
+# antigen / oh-my-zsh
 ANTIGEN_FILE="$HOME/.zsh/antigen/antigen.zsh"
 if [ -e $ANTIGEN_FILE ]; then
   source $ANTIGEN_FILE
   antigen use oh-my-zsh
-  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen theme dieter
+  antigen bundle git
+  antigen bundle dotenv
+  antigen bundle fzf
+  antigen bundle osx
+  antigen bundle z
+  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen apply
 fi
 
@@ -284,13 +289,57 @@ function help { tldr $1 | less }
 alias bat="bat --theme base16"
 
 # fzf
+function fzfe {
+  selection=$(ag -l -g "" | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%)
+
+  if [ -z "$selection" ]; then
+   return
+  else
+    nvr $selection
+  fi
+}
+
+function fzfn {
+  selection=$(ag -l -g "" $HOME/sync/notes | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%)
+
+  if [ -z "$selection" ]; then
+    :
+  else
+    nvr $selection
+  fi
+}
+
+function fzfs {
+  selection=$(ag --hidden -l -g "" $HOME/sync/dots | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%)
+
+  if [ -z "$selection" ]; then
+   :
+  else
+    nvr $selection
+  fi
+}
+
+function fzfp {
+  selection=$(ag -l -g "" $HOME/dev | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%)
+
+  if [ -z "$selection" ]; then
+    :
+  else
+    nvr $selection
+  fi
+}
+
+bindkey -s '^e' 'fzfe\n'
+bindkey -s '^n' 'fzfn\n'
+bindkey -s '^s' 'fzfs\n'
+bindkey -s '^p' 'fzfp\n'
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 FZF_CTRL_T_COMMAND='ag -l -g ""'
-FZF_CTRL_T_OPTS="--preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 40%"
-
+FZF_CTRL_T_OPTS="--bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%"
 FZF_ALT_C_COMMAND='fd -t d ""'
-FZF_ALT_C_OPTS="--height 40%"
+FZF_ALT_C_OPTS="--height 60% --preview 'fd -t d --full-path {}'"
 
-alias f="ag --hidden -l g "" | fzf --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 40%"
+alias f="ag --hidden -l g "" | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%"
 

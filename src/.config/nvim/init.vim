@@ -235,7 +235,7 @@ nnoremap <silent> <leader>ff :Buffers<CR>
 nnoremap <silent> <leader>fa :Files <CR>
 nnoremap <silent> <leader>fg :Ag<CR>
 nnoremap <silent> <leader>fp :HFiles ~/dev<CR>
-nnoremap <silent> <leader>fd :HFiles ~/sync/dots<CR>
+nnoremap <silent> <leader>fs :HFiles ~/sync/dots<CR>
 nnoremap <silent> <leader>fn :Files ~/sync/notes<CR>
 
 
