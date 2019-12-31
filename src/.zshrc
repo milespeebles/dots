@@ -126,6 +126,12 @@ function async {
   $@ > /dev/null 2>&1 &
 }
 
+function edit {
+  PREVIOUS_TERM=$TERM
+
+  TERM='xterm-24bit' emacs -nw && TERM=$PREVIOUS_TERM
+}
+
 # aliases
 alias e="neovimEdit"
 alias v="vimEdit"
