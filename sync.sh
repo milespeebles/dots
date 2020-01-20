@@ -54,10 +54,6 @@ git config --global credential.helper store
 git config --global user.name 'anonymous'
 git config --global user.email '<>'
 
-# fzf
-# rm -f $HOME/.fzf.zsh
-# cp $SYNCDIR/src/.fzf.zsh $HOME
-
 # terminfo
 rm -rf ~/.terminfo
 tic -x -o ~/.terminfo $SYNCDIR/src/xterm-24bit.terminfo
