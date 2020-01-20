@@ -38,6 +38,10 @@ Plug 'crusoexia/vim-monokai'
 Plug 'chriskempson/base16-vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" org-mode
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+
 " status line
 Plug 'itchyny/lightline.vim'
 
@@ -235,14 +239,9 @@ nnoremap <silent> <leader>ff :Buffers<CR>
 nnoremap <silent> <leader>fa :Files <CR>
 nnoremap <silent> <leader>fg :Ag<CR>
 nnoremap <silent> <leader>fp :HFiles ~/dev<CR>
-nnoremap <silent> <leader>fs :HFiles ~/sync/dots<CR>
-nnoremap <silent> <leader>fn :Files ~/sync/notes<CR>
-
-
-
-" vimwiki
-let g:vimwiki_list = [{'path': '$SYNCDIR/notes', 'syntax': 'markdown', 'ext': '.md'}]
-let g:taskwiki_markup_syntax = 'markdown'
+nnoremap <silent> <leader>fd :HFiles ~/dev/dots<CR>
+nnoremap <silent> <leader>fs :HFiles ~/sync<CR>
+nnoremap <silent> <leader>fn :Files ~/sync/org<CR>
 
 
 
@@ -265,11 +264,6 @@ let g:taskwiki_markup_syntax = 'markdown'
 " endfunction
 
 " autocmd BufWritePost * silent! exec Prettier() <afile>
-
-
-
-" vimwiki
-nnoremap <silent> <Leader>tr :TaskWikiBufferLoad<CR>
 
 
 
