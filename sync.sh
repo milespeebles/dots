@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASEDIR=$(dirname $BASH_SOURCE)
+BASEDIR=$(dirname $0)
 SYNCDIR=$HOME/dev/dots
 
 # directories
