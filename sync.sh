@@ -55,8 +55,8 @@ git config --global user.name 'anonymous'
 git config --global user.email '<>'
 
 # fzf
-rm -f $HOME/.fzf.zsh
-cp $SYNCDIR/src/.fzf.zsh $HOME
+# rm -f $HOME/.fzf.zsh
+# cp $SYNCDIR/src/.fzf.zsh $HOME
 
 # terminfo
 rm -rf ~/.terminfo
