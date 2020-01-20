@@ -8,8 +8,6 @@ mkdir -p $HOME/Desktop
 mkdir -p $HOME/Downloads
 mkdir -p $HOME/dev
 mkdir -p $HOME/sync
-mkdir -p $HOME/media
-mkdir -p $HOME/gallery
 
 # ignore
 rm -rf $HOME/.ignore
