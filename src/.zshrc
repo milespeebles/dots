@@ -19,6 +19,11 @@ if [ ! -d $TPM_FILE ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
+# emacs
+if [[ $TERM = dumb ]]; then
+  unset zle_bracketed_paste
+fi
+
 # options
 setopt AUTO_CD
 setopt MULTIOS
@@ -165,7 +170,8 @@ alias gc="git commit -v"
 alias "gc!"="git commit -v --amend"
 
 # youtube-dl
-alias download="youtube-dl -f bestvideo+bestaudio --output \"~/Downloads/%(id)s.%(ext)s\""
+alias yt="youtube-dl -f best --output \"~/Downloads/%(id)s.%(ext)s\""
+alias ytu="sudo youtube-dl -U"
 
 # trash-cli
 alias del="trash-put"

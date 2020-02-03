@@ -1,6 +1,8 @@
 dist
-volume
+gallery
+media
 node_modules
+.stversions
 Applications
 Creative Cloud Files
 Documents
