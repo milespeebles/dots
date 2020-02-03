@@ -68,7 +68,11 @@ Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
 
 " fzf
-Plug '/usr/local/opt/fzf'
+if isdirectory('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf'
+elseif isdirectory($HOME . '/.fzf')
+  Plug $HOME . '/.fzf'
+endif
 Plug 'junegunn/fzf.vim'
 
 " bufkill
