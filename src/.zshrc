@@ -19,11 +19,6 @@ if [ ! -d $TPM_FILE ]; then
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
 
-# emacs
-if [[ $TERM = dumb ]]; then
-  unset zle_bracketed_paste
-fi
-
 # options
 setopt AUTO_CD
 setopt MULTIOS
@@ -125,12 +120,6 @@ function async {
   $@ > /dev/null 2>&1 &
 }
 
-function edit {
-  PREVIOUS_TERM=$TERM
-
-  TERM='xterm-24bit' emacs -nw && TERM=$PREVIOUS_TERM
-}
-
 # aliases
 alias e="neovimEdit"
 alias v="vimEdit"
@@ -202,3 +191,15 @@ FZF_ALT_C_OPTS="--height 60% --preview 'fd -t d --full-path {}'"
 
 alias f="ag --hidden -l g "" | fzf --bind 'ctrl-e:execute(nvr {}),ctrl-v:execute-silent(echo {} | pbcopy)+abort' --preview 'bat --theme base16 --style=numbers --color always {} | head -500' --height 60%"
 
+# emacs
+if [[ $TERM = dumb ]]; then
+  unset zle_bracketed_paste
+fi
+
+function edit {
+  PREVIOUS_TERM=$TERM
+
+  TERM='xterm-24bit' emacs -nw && TERM=$PREVIOUS_TERM
+}
+
+alias doom="~/.emacs.d/bin/doom"
